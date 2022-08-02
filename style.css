@@ -1,0 +1,287 @@
+/* The gallery part of this code was based on a project from https://blog.logrocket.com/how-create-responsive-image-gallery-css-flexbox/ */
+/* The project that was used can be found at https://by9sfe.csb.app/ */
+
+/* ======================================
+Responsive Image gallery Style rules
+======================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800;900&display=swap');
+
+:root {
+  --navbar: rgba(230, 230, 230, 0.8);
+  --navText: rgba(43, 43, 44, 0.7);
+  --preOverlayLight: rgba(255, 255, 255, 0);
+  --preOverlayDarkText: rgba(43, 43, 44, 0);
+  --overlayLight: rgba(255, 255, 255, 0.8);
+  --overlayDarkText: rgba(43, 43, 44, 1);
+  --labelLightText: rgb(255, 255, 255);
+  --labelDark: rgba(43, 43, 44, 0.75);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(245, 249, 250);
+}
+
+.galleryContainer {
+  padding: 40px 5% 70px;
+}
+
+nav {
+  background-color: var(--navbar);
+  background-image: url('images/ropeBackground3.jpeg');
+  padding: 7px 0;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 0 30px;
+  overflow: hidden;
+  height: 65px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+}
+
+nav li {
+  margin-left: 25px;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--navText);
+  cursor: pointer;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav h1 {
+  font-size: 2.2rem;
+  font-weight: normal;
+}
+
+nav li {
+  font-weight: bold;
+}
+
+nav img {
+  max-width: 80px;
+  margin-right: 15px;
+  opacity: 0.5;
+}
+
+.heading-text {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.heading-text span {
+  font-weight: 100;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Responsive image gallery rules begin*/
+
+section {
+  background-color: var(--navbar);
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image-gallery > li {
+  /* flex-basis: 350px;  */
+  flex: 1 300px;
+  position: relative;
+  cursor: pointer;
+  max-height: 300px;
+}
+
+/* .image-gallery::after {
+  content: "";
+  flex-basis: 350px;
+} */
+
+.image-gallery li img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 25px;
+}
+
+.knotlabel {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background-color: var(--labelDark);
+  top: 0;
+  left: 0;
+  /* transform: scale(1); */
+  transition: all 0.8s 0.1s ease-in-out;
+  color: var(--labelLightText);
+  border-radius: 25px 25px 0 0;
+  /* center overlay text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.long {
+  font-size: 1.35rem;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--preOverlayLight);
+  top: 0;
+  left: 0;
+  /* transform: scale(0); */
+  transition: all 0.4s 0.1s ease-in-out;
+  color: var(--preOverlayDarkText);
+  border: 0px var(--labelDark) solid;
+  border-radius: 25px;
+  /* center overlay text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* hover */
+.image-gallery li:hover .overlay {
+  /* transform: scale(1); */
+  background-color: var(--overlayLight);
+  color: var(--overlayLightText);
+  border: 1px var(--labelDark) solid;
+}
+
+.image-gallery li:hover .knotlabel {
+  /* transform: scale(0); */
+  background-color: var(--preOverlayLight);
+  color: var(--preOverlayDarkText); 
+}
+
+#videoSection {
+  background-color: var(--navbar);
+  /* background-image: url('images/ropeBackground3.jpeg'); */
+  /* background-size: cover; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#btn {
+  text-align: center;
+  margin: 20px auto;
+  padding: 8px 15px;
+  background-color: var(--labelLightText);
+  color: var(--labelDark);
+  border-radius: 5px;
+  border: 1px #ccc solid;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.videoContainer {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 0 0 20px;
+}
+
+.iframe-container{
+  position: relative;
+  max-width: 840px;
+  max-height: 473px;
+  width: 80vw;
+  margin: 0 auto 0;
+  padding-bottom: 33%; 
+  height: 0;
+  border: 1px var(--labelDark) solid;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+  transition: padding-bottom 1s ease;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+footer {
+  background-color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1500px) {
+  .iframe-container {
+    padding-bottom: 40%;
+  }
+}
+@media (max-width: 1250px) {
+  .iframe-container {
+    padding-bottom: 47%;
+  }
+}
+@media (max-width: 980px) {
+  .iframe-container {
+    padding-bottom: 55%;
+    width: 90vw;
+  }
+  nav {
+    padding: 0;
+  }
+}
+@media (max-width: 650px) {
+  .iframe-container {
+    padding-bottom: 60%;
+    width: 95vw;
+  }
+}
